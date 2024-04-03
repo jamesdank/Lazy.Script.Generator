@@ -1,0 +1,1 @@
+This is a work in progress, as of now the database has to be edited manually and the commands are sorted by name, to group commands together in the name field I add preface like /user/add user or /network/local ip, /network/external ip.
