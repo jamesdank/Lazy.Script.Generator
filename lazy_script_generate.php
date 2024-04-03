@@ -55,24 +55,24 @@ echo
 /* create a prepared statement */
 $stmt = mysqli_stmt_init($mysqli);
 mysqli_stmt_prepare($stmt, "SELECT 
-    lazy_number,  
     lazy_name,
     lazy_commands
-    FROM lazy_script
+    FROM lazy_script ORDER BY lazy_name
     ");
 
 /* execute query */
 mysqli_stmt_execute($stmt);
 
 /* bind variables to prepared statement */
-mysqli_stmt_bind_result($stmt, $number, $name, $commands);
+mysqli_stmt_bind_result($stmt, $name, $commands);
 
 /* fetch values */
+$i = 1;
 while (mysqli_stmt_fetch($stmt)) {
     $commands=nl2br($commands);
 
     echo
-        $indent."&#36;(color_green '".$number.")') ".$name."</br>";
+        $indent."&#36;(color_green '".$i++.")') ".$name."</br>";
  }
 
  mysqli_stmt_close($stmt);
@@ -88,25 +88,25 @@ echo
 /* create a prepared statement */
 $stmt = mysqli_stmt_init($mysqli);
 mysqli_stmt_prepare($stmt, "SELECT 
-    lazy_number,  
     lazy_name,
     lazy_commands
-    FROM lazy_script
+    FROM lazy_script ORDER BY lazy_name
     ");
 
 /* execute query */
 mysqli_stmt_execute($stmt);
 
 /* bind variables to prepared statement */
-mysqli_stmt_bind_result($stmt, $number, $name, $commands);
+mysqli_stmt_bind_result($stmt, $name, $commands);
      
 /* fetch values */
+$i = 1;
 while (mysqli_stmt_fetch($stmt)) {
     
     $arr = explode("\n", $commands);
 
     echo
-    $indent.$indent.$number .")</br>";
+    $indent.$indent.$i++ .")</br>";
 
     foreach ($arr as $value) {
         echo $indent.$indent.$value."</br>";
