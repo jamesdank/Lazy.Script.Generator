@@ -10,7 +10,8 @@ $indent="&nbsp; &nbsp; ";
 echo 
     "
     #!/bin/bash</br></br>
-
+    # Config Editor ##############################################################</br>
+    editor=\"nano\"</br>
     ##############################################################################</br>
     # Colors #####################################################################</br>
     green='&#92;e[32m'</br>
@@ -29,7 +30,7 @@ echo
 
     function sub_menu() {</br>
     ".$indent."echo -e \" \"</br>
-    ".$indent."read -rp \"Type 'main' to go back to the menu or '0' to exit: `echo &#36;'\n> '`\" menu</br></br>
+    ".$indent."read -rp \"Type 'main' to go back to the menu or '0' to exit: `echo &#36;'\\n> '`\" menu</br></br>
 
     ".$indent."case \"&#36;menu\" in</br></br>
 
@@ -58,7 +59,7 @@ mysqli_stmt_prepare($stmt, "SELECT
     lazy_name,
     lazy_commands
     FROM lazy_script ORDER BY lazy_name
-    ");
+");
 
 /* execute query */
 mysqli_stmt_execute($stmt);
@@ -91,7 +92,7 @@ mysqli_stmt_prepare($stmt, "SELECT
     lazy_name,
     lazy_commands
     FROM lazy_script ORDER BY lazy_name
-    ");
+");
 
 /* execute query */
 mysqli_stmt_execute($stmt);
@@ -106,10 +107,11 @@ while (mysqli_stmt_fetch($stmt)) {
     $arr = explode("\n", $commands);
 
     echo
-    $indent.$indent.$i++ .")</br>";
+        $indent.$indent.$i++ .")</br>" ;
 
     foreach ($arr as $value) {
-        echo $indent.$indent.$value."</br>";
+        echo 
+            $indent.$indent.$value."</br>" ;
     }
 }
 
